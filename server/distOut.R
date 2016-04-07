@@ -4,7 +4,7 @@ output$distPlot <- renderPlot({
   data <- distData()
   
   validate(need(input$columnDist, "Select a column to generate plot"))
-  
+
   if(class(data[ ,input$columnDist]) == "factor"){
     
     plot <- qplot(data[ ,input$columnDist], fill = I("#CDDE5A"), col = I("black")) + 
@@ -16,7 +16,7 @@ output$distPlot <- renderPlot({
     plot <- switch(input$plotType,
                    "Histogram" = {
                      
-                     qplot(data[ ,input$columnDist],y = ..density.., geom = "histogram", , fill = I("#CDDE5A"), col = I("black")) + 
+                     qplot(data[ ,input$columnDist],y = ..density.., geom = "histogram", fill = I("#CDDE5A"), col = I("black")) + 
                        labs(title = paste("Histogram of", input$columnDist)) + 
                        xlab(input$columnDist)
                      
